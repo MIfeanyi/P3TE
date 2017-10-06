@@ -2,13 +2,6 @@ extends Node
 
 var TimeRemaining = 0
 var MaximumTimeAllowed = 30
-var Flame1Status = false
-var Flame2Status = false
-var Flame3Status = false
-var Flame4Status = false
-var Flame5Status = false
-var Flame6Status = false
-var Flame7Status = false
 var MainTimer
 var MainTimerLabel
 var Flame1Timer
@@ -24,52 +17,70 @@ func ResetCandle(FlameNumber):
 		return false
 	
 	if FlameNumber == 1:
-		Flame1Status = true;
 		ResetCandleTimer(1)
 	elif FlameNumber == 2:
-		Flame2Status = true;
 		ResetCandleTimer(2)
 	elif FlameNumber == 3:
-		Flame3Status = true;
 		ResetCandleTimer(3)
 	elif FlameNumber == 4:
-		Flame4Status = true;
 		ResetCandleTimer(4)
 	elif FlameNumber == 5:
-		Flame5Status = true;
 		ResetCandleTimer(5)
 	elif FlameNumber == 6:
-		Flame6Status = true;
 		ResetCandleTimer(6)
 	elif FlameNumber == 7:
-		Flame7Status = true;
 		ResetCandleTimer(7)
 	else:
 		return false
 
 func ResetCandleTimer(FlameNumber):
-	# TODO get candle timer
-	
-	# Pick a random extinguish time
-	var MaxRemainingTime = TimeRemaining + 1
+	# Pick a random extinguish time based on remaining time + 1 second
+	var MaxRemainingTime = MainTimer.get_time_left() + 1
 	var MaxExtinguishTime = range(1, MaxRemainingTime)[randi()%range(1, MaxRemainingTime).size()]
-	print("New timeout for the Extinguish timer is " + MaxExtinguishTime + " seconds");
+	print("New timeout for the Extinguish timer is " + str(MaxExtinguishTime) + " seconds");
 	
-	var FlameTimerNodeRef = "Flame" + FlameNumber + "Timer"
+	get_node("Flame"+str(FlameNumber)+"/Flame").show()
+	
+	var FlameTimerNodeRef = "Flame" + str(FlameNumber) + "Timer"
 	var FlameTimer = get_node(FlameTimerNodeRef)
-	FlameTimer.set_wait_time(MaximumTimeAllowed)
-	FlameTimer.connect("timeout", self, "_on_"+FlameTimerNodeRef+"_Timeout")
-	print("Resetting Timer for FlameTimer " + FlameNumber);
+	FlameTimer.set_wait_time(MaxExtinguishTime)
+	FlameTimer.connect("timeout", self, "_on_"+str(FlameTimerNodeRef)+"_timeout")
+	print("Resetting Timer for Flame" + str(FlameNumber) + "Timer")
 	FlameTimer.start()
 	
+func CheckIfCandlesAreLit():
+	var Candle1Lit = get_node("Flame1/Flame").is_hidden()
+	var Candle2Lit = get_node("Flame2/Flame").is_hidden()
+	var Candle3Lit = get_node("Flame3/Flame").is_hidden()
+	var Candle4Lit = get_node("Flame4/Flame").is_hidden()
+	var Candle5Lit = get_node("Flame5/Flame").is_hidden()
+	var Candle6Lit = get_node("Flame6/Flame").is_hidden()
+	var Candle7Lit = get_node("Flame7/Flame").is_hidden()
+	
+	if (Candle1Lit == false and Candle2Lit == false and Candle3Lit == false and Candle4Lit == false and Candle5Lit == false and Candle6Lit == false and Candle7Lit == false):
+		# They've completed this minigame
+		print("Minigame completed")
+		# Stop All Timers (this won't matter in practice but does for development)
+		get_node("MainTimer").stop();
+		get_node("Flame1Timer").stop();
+		get_node("Flame2Timer").stop();
+		get_node("Flame3Timer").stop();
+		get_node("Flame4Timer").stop();
+		get_node("Flame5Timer").stop();
+		get_node("Flame6Timer").stop();
+		get_node("Flame7Timer").stop();
+	else:
+		# Still haven't completed it
+		print("Minigame not completed")
+	 
 func _ready():
 	#Start main timer
 	MainTimer = get_node("MainTimer")
 	MainTimerLabel = get_node("TimeRemaining")
 	
 	MainTimer.set_wait_time(MaximumTimeAllowed)
-	MainTimer.connect("timeout", self, "_on_MainTimer_timeout");
-	print("Starting Main Timer");
+	MainTimer.connect("timeout", self, "_on_MainTimer_timeout")
+	print("Starting Main Timer")
 	MainTimer.start()
 	
 func _on_Flame1_input_event( viewport, event, shape_idx ):
@@ -77,16 +88,16 @@ func _on_Flame1_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Flame 1 clicked")
-		Flame1Status = true
 		ResetCandle(1)
+		CheckIfCandlesAreLit()
 
 func _on_Flame2_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Flame 2 clicked")
-		Flame2Status = true
 		ResetCandle(2)
+		CheckIfCandlesAreLit()
 
 
 func _on_Flame3_input_event( viewport, event, shape_idx ):
@@ -94,8 +105,8 @@ func _on_Flame3_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Flame 3 clicked")
-		Flame3Status = true
 		ResetCandle(3)
+		CheckIfCandlesAreLit()
 
 
 func _on_Flame4_input_event( viewport, event, shape_idx ):
@@ -103,8 +114,8 @@ func _on_Flame4_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Flame 4 clicked")
-		Flame4Status = true
 		ResetCandle(4)
+		CheckIfCandlesAreLit()
 
 
 func _on_Flame5_input_event( viewport, event, shape_idx ):
@@ -112,17 +123,16 @@ func _on_Flame5_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Flame 5 clicked")
-		Flame5Status = true
 		ResetCandle(5)
-
+		CheckIfCandlesAreLit()
 
 func _on_Flame6_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Flame 6 clicked")
-		Flame6Status = true
 		ResetCandle(6)
+		CheckIfCandlesAreLit()
 
 
 func _on_Flame7_input_event( viewport, event, shape_idx ):
@@ -130,37 +140,52 @@ func _on_Flame7_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Flame 7 clicked")
-		Flame7Status = true
 		ResetCandle(7)
-
+		CheckIfCandlesAreLit()
 
 func _on_MainTimer_timeout():
-	pass # replace with function body
+	# If the player ever gets here they didn't win so we have to rack up a loss.
+	print("Minigame Lost!")
+	# Transition to next game (TODO by other developers)
 
 
 func _on_Flame1Timer_timeout():
-	pass # replace with function body
+	print("Flame 1 is dead")
+	get_node("Flame1/Flame").hide()
+	get_node("Flame1Timer").stop()
 
 
 func _on_Flame2Timer_timeout():
-	pass # replace with function body
+	print("Flame 2 is dead")
+	get_node("Flame2/Flame").hide()
+	get_node("Flame2Timer").stop()
 
 
 func _on_Flame3Timer_timeout():
-	pass # replace with function body
+	print("Flame 3 is dead")
+	get_node("Flame3/Flame").hide()
+	get_node("Flame3Timer").stop()
 
 
 func _on_Flame4Timer_timeout():
-	pass # replace with function body
+	print("Flame 4 is dead")
+	get_node("Flame4/Flame").hide()
+	get_node("Flame4Timer").stop()
 
 
 func _on_Flame5Timer_timeout():
-	pass # replace with function body
+	print("Flame 5 is dead")
+	get_node("Flame5/Flame").hide()
+	get_node("Flame5Timer").stop()
 
 
 func _on_Flame6Timer_timeout():
-	pass # replace with function body
+	print("Flame 6 is dead")
+	get_node("Flame6/Flame").hide()
+	get_node("Flame6Timer").stop()
 
 
 func _on_Flame7Timer_timeout():
-	pass # replace with function body
+	print("Flame 7 is dead")
+	get_node("Flame7/Flame").hide()
+	get_node("Flame7Timer").stop()
