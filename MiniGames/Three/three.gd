@@ -4,6 +4,7 @@ export(float) var time_limit = 5
 export(int) var number_of_clothes = 6
 onready var timer = get_node("Timer")
 onready var item = get_node("Clothes/Item")
+onready var tween = get_node("Time/Tween")
 var last_time = 0
 var score = 0
 
@@ -35,13 +36,15 @@ func randomize_items():
 			child.set_pos(Vector2(randi() % 600 + 10, randi() % 550 + 40))
 
 func update_time(time_left):
-	# Optional could make time bounce or move for each second changed
+	tween.interpolate_property(get_node("Time"), "rect/scale", Vector2(1.5, 1.5), Vector2(1.0, 1.0), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_IN)
+	tween.interpolate_property(get_node("Time"), "rect/pos", Vector2(450, 32), Vector2(511, 32), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_IN)
 	var time_str = str(time_left)
 	if time_left == 1:
 		time_str += " Sec"
 	else:
 		time_str += " Secs"
 	get_node("Time").set_text(time_str)
+	tween.start()
 	last_time = time_left
 
 func _process(delta):

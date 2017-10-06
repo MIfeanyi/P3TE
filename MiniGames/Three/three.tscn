@@ -6,7 +6,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 
-font/size = 16
+font/size = 32
 font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 3 )
@@ -70,14 +70,22 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 577.0
-margin/top = 27.0
+margin/left = 511.0
+margin/top = 32.0
 margin/right = 617.0
-margin/bottom = 42.0
+margin/bottom = 60.0
 custom_fonts/font = SubResource( 1 )
+text = "5 Secs"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Tween" type="Tween" parent="Time"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
