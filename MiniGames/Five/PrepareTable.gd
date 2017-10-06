@@ -11,6 +11,7 @@ var Flame4Timer
 var Flame5Timer
 var Flame6Timer
 var Flame7Timer
+var last_time = 0
 
 func ResetCandle(FlameNumber):
 	if(typeof(FlameNumber) != TYPE_INT):
@@ -60,6 +61,7 @@ func CheckIfCandlesAreLit():
 	if (Candle1Lit == false and Candle2Lit == false and Candle3Lit == false and Candle4Lit == false and Candle5Lit == false and Candle6Lit == false and Candle7Lit == false):
 		# They've completed this minigame
 		print("Minigame completed")
+		get_node("VictoryPanel").show();
 		# Stop All Timers (this won't matter in practice but does for development)
 		get_node("MainTimer").stop();
 		get_node("Flame1Timer").stop();
@@ -82,7 +84,24 @@ func _ready():
 	MainTimer.connect("timeout", self, "_on_MainTimer_timeout")
 	print("Starting Main Timer")
 	MainTimer.start()
-	
+
+func update_time(time_left):
+	# Optional could make time bounce or move for each second changed
+	var time_str = str(time_left)
+	if time_left == 1:
+		time_str += " Sec"
+	else:
+		time_str += " Secs"
+	get_node("TimeRemaining").set_text(time_str)
+	last_time = time_left
+
+# Native Godot Methods
+
+func _process(delta):
+	var time_left = int(MainTimer.get_time_left())
+	if not last_time == time_left:
+		update_time(time_left)
+
 func _on_Flame1_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON \
 	and event.button_index == BUTTON_LEFT \
@@ -144,7 +163,8 @@ func _on_Flame7_input_event( viewport, event, shape_idx ):
 		CheckIfCandlesAreLit()
 
 func _on_MainTimer_timeout():
-	# If the player ever gets here they didn't win so we have to rack up a loss.
+	# If the player ever gets here they didn't win so we have to rack up a loss.\
+	get_node("DefeatPanel").show();
 	print("Minigame Lost!")
 	# Transition to next game (TODO by other developers)
 
