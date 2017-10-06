@@ -23,9 +23,29 @@ func ResetCandle(FlameNumber):
 	if(typeof(FlameNumber) != TYPE_INT):
 		return false
 	
-	#match FlameNumber:
-	#	1: 
-		
+	if FlameNumber == 1:
+		Flame1Status = true;
+		ResetCandleTimer(1)
+	elif FlameNumber == 2:
+		Flame2Status = true;
+		ResetCandleTimer(2)
+	elif FlameNumber == 3:
+		Flame3Status = true;
+		ResetCandleTimer(3)
+	elif FlameNumber == 4:
+		Flame4Status = true;
+		ResetCandleTimer(4)
+	elif FlameNumber == 5:
+		Flame5Status = true;
+		ResetCandleTimer(5)
+	elif FlameNumber == 6:
+		Flame6Status = true;
+		ResetCandleTimer(6)
+	elif FlameNumber == 7:
+		Flame7Status = true;
+		ResetCandleTimer(7)
+	else:
+		return false
 
 func ResetCandleTimer(FlameNumber):
 	# TODO get candle timer
@@ -33,8 +53,14 @@ func ResetCandleTimer(FlameNumber):
 	# Pick a random extinguish time
 	var MaxRemainingTime = TimeRemaining + 1
 	var MaxExtinguishTime = range(1, MaxRemainingTime)[randi()%range(1, MaxRemainingTime).size()]
+	print("New timeout for the Extinguish timer is " + MaxExtinguishTime + " seconds");
 	
-	#if FlameNumber == 1:
+	var FlameTimerNodeRef = "Flame" + FlameNumber + "Timer"
+	var FlameTimer = get_node(FlameTimerNodeRef)
+	FlameTimer.set_wait_time(MaximumTimeAllowed)
+	FlameTimer.connect("timeout", self, "_on_"+FlameTimerNodeRef+"_Timeout")
+	print("Resetting Timer for FlameTimer " + FlameNumber);
+	FlameTimer.start()
 	
 func _ready():
 	#Start main timer
@@ -43,6 +69,7 @@ func _ready():
 	
 	MainTimer.set_wait_time(MaximumTimeAllowed)
 	MainTimer.connect("timeout", self, "_on_MainTimer_timeout");
+	print("Starting Main Timer");
 	MainTimer.start()
 	
 func _on_Flame1_input_event( viewport, event, shape_idx ):
@@ -108,4 +135,32 @@ func _on_Flame7_input_event( viewport, event, shape_idx ):
 
 
 func _on_MainTimer_timeout():
+	pass # replace with function body
+
+
+func _on_Flame1Timer_timeout():
+	pass # replace with function body
+
+
+func _on_Flame2Timer_timeout():
+	pass # replace with function body
+
+
+func _on_Flame3Timer_timeout():
+	pass # replace with function body
+
+
+func _on_Flame4Timer_timeout():
+	pass # replace with function body
+
+
+func _on_Flame5Timer_timeout():
+	pass # replace with function body
+
+
+func _on_Flame6Timer_timeout():
+	pass # replace with function body
+
+
+func _on_Flame7Timer_timeout():
 	pass # replace with function body
