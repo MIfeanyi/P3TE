@@ -57,7 +57,7 @@ func _ready():
 	add_item("res://RawAssets/Sketches/shirt_ph.png", true)
 	add_item("res://RawAssets/Sketches/tie_ph.png", true)
 	add_item("res://RawAssets/Sketches/beenie_ph.png", false)
-	add_item("res://RawAssets/Sketches/raygun_ph.png", false)
+	add_item("res://MiniGames/Three/Raygun.png", false)
 	add_item("res://RawAssets/Sketches/clown_shoes_ph.png", false)
 	randomize_items()
 	timer.set_wait_time(time_limit)
