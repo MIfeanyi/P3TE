@@ -78,6 +78,8 @@ func CheckIfCandlesAreLit():
 		print("Minigame not completed")
 	 
 func _ready():
+	randomize()
+	
 	#Start main timer
 	MainTimer = get_node("MainTimer")
 	MainTimerLabel = get_node("TimeRemaining")
