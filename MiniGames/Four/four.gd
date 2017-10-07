@@ -6,12 +6,43 @@ onready var tween = get_node("Time/Tween")
 var last_time = 0
 const FLICKER_TIMER = 0.1
 var flicker = 0
+var items = [ "res://MiniGames/Four/Raygun.png", "res://MiniGames/Four/Pet1.png", "res://MiniGames/Four/Pet2.png", "res://MiniGames/Four/Sock1.png", "res://MiniGames/Four/Sock2.png" ]
+var score = 0
 
 func game_failed():
 	print("FAILED")
 
 func game_passed():
+	timer.stop()
 	print("SUCCESS")
+
+func shuffleList(list):
+    var shuffledList = []
+    var indexList = range(list.size())
+    for i in range(list.size()):
+        randomize()
+        var x = randi()%indexList.size()
+        shuffledList.append(list[x])
+        indexList.remove(x)
+        list.remove(x)
+    return shuffledList
+
+func item_clicked(i):
+	i.hide()
+	score += 1
+	if score == 3:
+		game_passed()
+
+func add_item(i):
+	var max_items = get_node("BG/HideLocations").get_child_count()
+	var found_spot = false
+	while not found_spot:
+		var spot = get_node("BG/HideLocations").get_child(randi() % max_items)
+		if not spot.is_visible():
+			spot.set_normal_texture(load(i))
+			spot.connect("pressed", self, "item_clicked", [ spot ])
+			spot.show()
+			found_spot = true
 
 func update_time(time_left):
 	tween.interpolate_property(get_node("Time"), "rect/scale", Vector2(1.5, 1.5), Vector2(1.0, 1.0), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_IN)
@@ -35,6 +66,11 @@ func _process(delta):
 		get_node("BG/Flash").set_opacity(rand_range(0, 0.70))
 
 func _ready():
+	items = shuffleList(items)
+	for x in range(3):
+		var fileCheck = File.new()
+		if fileCheck.file_exists(items[x]):
+			add_item(items[x])
 	timer.set_wait_time(time_limit)
 	timer.start()
 	set_process(true)
