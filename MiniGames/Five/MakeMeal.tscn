@@ -1,27 +1,35 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://MiniGames/Five/MakeMeal.gd" type="Script" id=1]
-[ext_resource path="res://MiniGames/Five/ChickenSprite.tres" type="Texture" id=2]
-[ext_resource path="res://MiniGames/Five/EggSprite.tres" type="Texture" id=3]
-[ext_resource path="res://MiniGames/Five/MushroomSprite.tres" type="Texture" id=4]
-[ext_resource path="res://MiniGames/Five/CarrotSprite.tres" type="Texture" id=5]
+[ext_resource path="res://RawAssets/Fonts/Aero.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://MiniGames/Five/ChickenSprite.tres" type="Texture" id=3]
+[ext_resource path="res://MiniGames/Five/EggSprite.tres" type="Texture" id=4]
+[ext_resource path="res://MiniGames/Five/MushroomSprite.tres" type="Texture" id=5]
+[ext_resource path="res://MiniGames/Five/CarrotSprite.tres" type="Texture" id=6]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="DynamicFont" id=5]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 11.1911, 10.0736 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 39.0238, 54.4068 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 57.5555, 49.8151 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 51.1888, 39.099 )
@@ -29,6 +37,7 @@ extents = Vector2( 51.1888, 39.099 )
 [node name="Root" type="Node"]
 
 script/script = ExtResource( 1 )
+time_limit = 5
 
 [node name="Background" type="Sprite" parent="."]
 
@@ -37,12 +46,35 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Time" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 511.0
+margin/top = 19.0
+margin/right = 617.0
+margin/bottom = 47.0
+custom_fonts/font = SubResource( 5 )
+text = "5 Secs"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Tween" type="Tween" parent="Time"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [node name="Chicken" type="Area2D" parent="."]
 
 editor/display_folded = true
 transform/pos = Vector2( 83.9325, 103.788 )
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 3.70689, 0, 0, 4.90085, 20.9481, 471.448 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -54,13 +86,13 @@ angular_damp = 1.0
 
 transform/pos = Vector2( 27.1026, 471.441 )
 transform/scale = Vector2( 0.16822, 0.16822 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chicken"]
 
 transform/pos = Vector2( 20.9481, 471.448 )
 transform/scale = Vector2( 3.70689, 4.90085 )
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
@@ -69,7 +101,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 83.9325, 103.788 )
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 138.987, 469.584 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -81,12 +113,12 @@ angular_damp = 1.0
 
 transform/pos = Vector2( 137.698, 469.501 )
 transform/scale = Vector2( 0.285064, 0.285064 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Egg"]
 
 transform/pos = Vector2( 138.987, 469.584 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
@@ -95,7 +127,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 83.9325, 103.788 )
 input/pickable = true
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 275.462, 466.943 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -107,12 +139,12 @@ angular_damp = 1.0
 
 transform/pos = Vector2( 275.729, 468.927 )
 transform/scale = Vector2( 0.326881, 0.326881 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom"]
 
 transform/pos = Vector2( 275.462, 466.943 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
@@ -121,7 +153,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 81.7164, 98.2473 )
 input/pickable = true
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 428.211, 471.935 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -133,12 +165,12 @@ angular_damp = 1.0
 
 transform/pos = Vector2( 427.136, 473.248 )
 transform/scale = Vector2( 0.200939, 0.200939 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carrot"]
 
 transform/pos = Vector2( 428.211, 471.935 )
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
@@ -151,43 +183,43 @@ transform/scale = Vector2( 4.56101, 2.68538 )
 
 transform/pos = Vector2( -19.0746, -12.9429 )
 transform/scale = Vector2( 0.0181984, 0.0395302 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ingredient2" type="Sprite" parent="RecipeWrapper"]
 
 transform/pos = Vector2( -5.26191, -12.9429 )
 transform/scale = Vector2( 0.0181984, 0.0395302 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ingredient3" type="Sprite" parent="RecipeWrapper"]
 
 transform/pos = Vector2( 7.23533, -12.9429 )
 transform/scale = Vector2( 0.0181984, 0.0395302 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ingredient4" type="Sprite" parent="RecipeWrapper"]
 
 transform/pos = Vector2( 20.3903, -12.9429 )
 transform/scale = Vector2( 0.0181984, 0.0395302 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ingredient5" type="Sprite" parent="RecipeWrapper"]
 
 transform/pos = Vector2( -13.8126, 13.4965 )
 transform/scale = Vector2( 0.0181984, 0.0395302 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ingredient6" type="Sprite" parent="RecipeWrapper"]
 
 transform/pos = Vector2( -1.09616, 13.4965 )
 transform/scale = Vector2( 0.0181984, 0.0395302 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ingredient7" type="Sprite" parent="RecipeWrapper"]
 
 transform/pos = Vector2( 11.6203, 13.4965 )
 transform/scale = Vector2( 0.0181984, 0.0395302 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="VictoryPanel" type="Panel" parent="."]
 
@@ -245,6 +277,13 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="input_event" from="Chicken" to="." method="_on_Chicken_input_event"]
 
 [connection signal="input_event" from="Egg" to="." method="_on_Egg_input_event"]
@@ -252,5 +291,7 @@ max_lines_visible = -1
 [connection signal="input_event" from="Mushroom" to="." method="_on_Mushroom_input_event"]
 
 [connection signal="input_event" from="Carrot" to="." method="_on_Carrot_input_event"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

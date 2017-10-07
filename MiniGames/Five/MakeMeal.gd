@@ -11,6 +11,10 @@ var EggSpriteRef = preload("res://MiniGames/Five/EggSprite.tres")
 var MushroomSpriteRef = preload("res://MiniGames/Five/MushroomSprite.tres")
 var CarrotSpriteRef = preload("res://MiniGames/Five/CarrotSprite.tres")
 var Meal = []
+export(float) var time_limit = 5
+onready var timer = get_node("Timer")
+onready var tween = get_node("Time/Tween")
+var last_time = 0
 
 # Custom Methods
 func DetermineRecipe():
@@ -48,10 +52,12 @@ func DetermineRecipeAdherence():
 		# Victory Condition
 		print("Dinner is served!")
 		get_node("VictoryPanel").show();
+		timer.stop()
 	else:
 		# Defeat Condition
 		print("Dinner is ruined!")
 		get_node("DefeatPanel").show();
+		timer.stop()
 
 func CheckIfSolutionIsReady():
 	# Checks to see if the completed recipe has seven ingredients
@@ -59,7 +65,19 @@ func CheckIfSolutionIsReady():
 		DetermineRecipeAdherence()
 	else:
 		print("All seven ingredients not added")
-	
+
+func update_time(time_left):
+	tween.interpolate_property(get_node("Time"), "rect/scale", Vector2(1.5, 1.5), Vector2(1.0, 1.0), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_IN)
+	tween.interpolate_property(get_node("Time"), "rect/pos", Vector2(450, 19), Vector2(511, 19), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_IN)
+	var time_str = str(time_left)
+	if time_left == 1:
+		time_str += " Sec"
+	else:
+		time_str += " Secs"
+	get_node("Time").set_text(time_str)
+	tween.start()
+	last_time = time_left
+
 # Native Godot Methods
 func _ready():
 	randomize()
@@ -68,6 +86,14 @@ func _ready():
 	# Initialization here
 	DetermineRecipe()
 	DisplayRecipe()
+	timer.set_wait_time(time_limit)
+	timer.start()
+	set_process(true)
+
+func _process(delta):
+	var time_left = int(timer.get_time_left())
+	if not last_time == time_left:
+		update_time(time_left)
 
 func _on_Chicken_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON \
@@ -100,3 +126,8 @@ func _on_Carrot_input_event( viewport, event, shape_idx ):
 		print("Carrot Clicked")
 		Meal.push_back("Carrot")
 		CheckIfSolutionIsReady()
+
+func _on_Timer_timeout():
+	# Eventually make a fail function
+	print("Dinner is ruined!")
+	get_node("DefeatPanel").show();
