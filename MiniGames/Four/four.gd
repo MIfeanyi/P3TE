@@ -4,6 +4,8 @@ export(float) var time_limit = 5
 onready var timer = get_node("Timer")
 onready var tween = get_node("Time/Tween")
 var last_time = 0
+const FLICKER_TIMER = 0.1
+var flicker = 0
 
 func game_failed():
 	print("FAILED")
@@ -27,6 +29,10 @@ func _process(delta):
 	var time_left = int(timer.get_time_left())
 	if not last_time == time_left:
 		update_time(time_left)
+	flicker += delta
+	if flicker > FLICKER_TIMER:
+		flicker = 0
+		get_node("BG/Flash").set_opacity(rand_range(0, 0.70))
 
 func _ready():
 	timer.set_wait_time(time_limit)
