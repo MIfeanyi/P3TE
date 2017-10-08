@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=12 format=1]
 
-[ext_resource path="res://Datr/gfx/world.png" type="Texture" id=1]
-[ext_resource path="res://menu/gfx/Title.png" type="Texture" id=2]
-[ext_resource path="res://menu/sfx/sfx.tres" type="SampleLibrary" id=3]
-[ext_resource path="res://menu/sfx/sfx.gd" type="Script" id=4]
-[ext_resource path="res://menu/gfx/ship.png" type="Texture" id=5]
-[ext_resource path="res://menu/ship.gd" type="Script" id=6]
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://Datr/gfx/world.png" type="Texture" id=2]
+[ext_resource path="res://menu/gfx/Title.png" type="Texture" id=3]
+[ext_resource path="res://menu/sfx/sfx.tres" type="SampleLibrary" id=4]
+[ext_resource path="res://menu/sfx/sfx.gd" type="Script" id=5]
+[ext_resource path="res://menu/gfx/ship.png" type="Texture" id=6]
+[ext_resource path="res://menu/ship.gd" type="Script" id=7]
+[ext_resource path="res://RawAssets/Fonts/Aero.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -41,7 +43,17 @@ tracks/0/keys = {
 "values": [ Vector2( -164.53, 146.202 ), Vector2( -422.355, 304.58 ), Vector2( -659.308, 356.145 ), Vector2( -898.717, 226.005 ) ]
 }
 
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 42
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 8 )
+
 [node name="Node" type="Node"]
+
+script/script = ExtResource( 1 )
+StartScene = "res://MiniGames/One/Intro.tscn"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 
@@ -75,19 +87,19 @@ transform/scale = Vector2( 1.83382, 1.77535 )
 
 transform/pos = Vector2( -1.13434, -41.4257 )
 transform/scale = Vector2( 2.71856, 1.34641 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="Title" type="Sprite" parent="Background"]
 
 transform/pos = Vector2( 172.882, -143.39 )
 transform/scale = Vector2( 0.345603, 0.351987 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="SamplePlayer" type="SamplePlayer" parent="Background"]
 
 config/polyphony = 1
-config/samples = ExtResource( 3 )
+config/samples = ExtResource( 4 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -100,7 +112,7 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
@@ -113,7 +125,7 @@ collision/margin = 0.08
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
 transform/pos = Vector2( -918.311, 210.897 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D"]
 
@@ -126,8 +138,27 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "Float1"
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
+
+[node name="Button" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 270.0
+margin/top = 401.0
+margin/right = 398.0
+margin/bottom = 461.0
+custom_fonts/font = SubResource( 3 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Start"
+flat = false
 
 [connection signal="finished" from="KinematicBody2D/AnimationPlayer" to="KinematicBody2D/AnimationPlayer" method="_on_AnimationPlayer_finished"]
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
 

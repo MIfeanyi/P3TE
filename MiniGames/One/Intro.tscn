@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://MiniGames/One/Intro.gd" type="Script" id=1]
+[ext_resource path="res://RawAssets/Fonts/Aero.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[node name="Intro" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+transition_time = 3.0
+minigame = "res://MiniGames/Three/three.tscn"
+
+[node name="BG" type="Panel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 641.0
+margin/bottom = 639.0
+
+[node name="CenterContainer" type="CenterContainer" parent="BG"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 638.0
+margin/bottom = 637.0
+use_top_left = false
+
+[node name="Title" type="Label" parent="BG/CenterContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 98.0
+margin/top = 289.0
+margin/right = 539.0
+margin/bottom = 348.0
+custom_fonts/font = SubResource( 1 )
+text = "You wake up in the morning
+and check your phone..."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+
