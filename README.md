@@ -57,3 +57,4 @@ licenses:
 
 * [80 FIGHT](https://freesound.org/people/bipwave/sounds/393859/) by bipwave
   under the [CC Zero License](http://creativecommons.org/publicdomain/zero/1.0/)
+* [8bit mix](https://freesound.org/people/weaverfishable/sounds/151780/) by weaverfishable under the [CC Zero License](http://creativecommons.org/publicdomain/zero/1.0/)
