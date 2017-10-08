@@ -11,7 +11,7 @@ For a list of tools see the tools section.
 * Game Designer
 ** MimeBro
 * Artists
-** MagisterT
+** Crecs
 ** Skullyatta
 ** zombieCraig
 ** Aoric
