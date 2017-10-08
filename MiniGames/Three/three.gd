@@ -53,12 +53,12 @@ func _process(delta):
 		update_time(time_left)
 
 func _ready():
-	add_item("res://RawAssets/Sketches/pant_ph.png", true)
-	add_item("res://RawAssets/Sketches/shirt_ph.png", true)
-	add_item("res://RawAssets/Sketches/tie_ph.png", true)
-	add_item("res://RawAssets/Sketches/beenie_ph.png", false)
+	add_item("res://MiniGames/Three/Pants.png", true)
+	add_item("res://MiniGames/Three/Shirt.png", true)
+	add_item("res://MiniGames/Three/Tie.png", true)
+	add_item("res://MiniGames/Three/Beenie.png", false)
 	add_item("res://MiniGames/Three/Raygun.png", false)
-	add_item("res://RawAssets/Sketches/clown_shoes_ph.png", false)
+	add_item("res://MiniGames/Three/ClownShoes.png", false)
 	randomize_items()
 	timer.set_wait_time(time_limit)
 	timer.start()
