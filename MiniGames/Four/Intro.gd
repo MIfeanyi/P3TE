@@ -1,7 +1,7 @@
 extends Control
 
 export(float) var transition_time = 3.0 # Transition timer setting
-export(String, FILE, "*.tscn") var minigame = "res://MiniGames/Three/three.tscn"
+export(String, FILE, "*.tscn") var minigame = "res://MiniGames/Four/four.tscn"
 onready var timer = get_node("Timer")
 
 func start_game():
@@ -12,7 +12,7 @@ func start_game():
 		print("Error: Minigame scene could not be loaded")
 
 func _input(event):
-	if(event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON):
+	if((event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON) and event.pressed):
 		start_game()
 
 func _ready():

@@ -2,17 +2,25 @@ extends Node2D
 
 export(float) var time_limit = 5
 export(int) var number_of_clothes = 6
+export(String, FILE, "*.tscn") var next_scene = "res://MiniGames/Four/Intro.tscn"
 onready var timer = get_node("Timer")
 onready var item = get_node("Clothes/Item")
 onready var tween = get_node("Time/Tween")
 var last_time = 0
 var score = 0
+var change_scene = null
 
 func game_failed():
+	get_node("DefeatPanel").show()
+	timer.stop()
 	print("FAILED")
+	change_scene = "res://MiniGames/Three/Intro.tscn"
 
 func game_passed():
+	get_node("VictoryPanel").show()
+	timer.stop()
 	print("SUCCESS")
+	change_scene = next_scene
 
 func item_selected(selected):
 	if not selected.is_good_item():
@@ -52,6 +60,11 @@ func _process(delta):
 	if not last_time == time_left:
 		update_time(time_left)
 
+func _input(event):
+	if not change_scene == null:
+		if((event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON) and event.pressed):
+			global.goto_scene(change_scene)
+
 func _ready():
 	add_item("res://MiniGames/Three/Pants.png", true)
 	add_item("res://MiniGames/Three/Shirt.png", true)
@@ -63,6 +76,7 @@ func _ready():
 	timer.set_wait_time(time_limit)
 	timer.start()
 	set_process(true)
+	set_process_input(true)
 
 func _on_Timer_timeout():
 	game_failed()

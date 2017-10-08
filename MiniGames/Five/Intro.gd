@@ -1,7 +1,7 @@
 extends Control
 
 export(float) var transition_time = 3.0 # Transition timer setting
-export(String, FILE, "*.tscn") var minigame = "res://MiniGames/Six/PrepareTable.tscn"
+export(String, FILE, "*.tscn") var minigame = "res://MiniGames/Five/MakeMeal.tscn"
 onready var timer = get_node("Timer")
 
 func start_game():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://MiniGames/One/Intro.gd" type="Script" id=1]
+[ext_resource path="res://MiniGames/Three/Intro.gd" type="Script" id=1]
 [ext_resource path="res://RawAssets/Fonts/Aero.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -22,7 +22,7 @@ margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
 transition_time = 3.0
-minigame = "res://MiniGames/One/One.tscn"
+minigame = "res://MiniGames/Five/MakeMeal.tscn"
 
 [node name="BG" type="Panel" parent="."]
 
@@ -53,14 +53,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 98.0
-margin/top = 289.0
-margin/right = 539.0
-margin/bottom = 348.0
+margin/left = 130.0
+margin/top = 304.0
+margin/right = 507.0
+margin/bottom = 332.0
 custom_fonts/font = SubResource( 1 )
-text = "You wake up in the morning
-and check your phone..."
-align = 1
+text = "Hurry!  Clean the house!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

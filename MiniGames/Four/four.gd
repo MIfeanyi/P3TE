@@ -1,6 +1,7 @@
 extends Node2D
 
 export(float) var time_limit = 5
+export(String, FILE, "*.tscn") var next_scene = "res://MiniGames/Five/Intro.tscn"
 onready var timer = get_node("Timer")
 onready var tween = get_node("Time/Tween")
 var last_time = 0
@@ -8,13 +9,19 @@ const FLICKER_TIMER = 0.1
 var flicker = 0
 var items = [ "res://MiniGames/Four/Raygun.png", "res://MiniGames/Four/Pet1.png", "res://MiniGames/Four/Pet2.png", "res://MiniGames/Four/Sock1.png", "res://MiniGames/Four/Sock2.png" ]
 var score = 0
+var change_scene = null
 
 func game_failed():
+	get_node("DefeatPanel").show()
+	timer.stop()
 	print("FAILED")
+	change_scene = "res://MiniGames/Four/Intro.tscn"
 
 func game_passed():
+	get_node("VictoryPanel").show()
 	timer.stop()
 	print("SUCCESS")
+	change_scene = next_scene
 
 func shuffleList(list):
     var shuffledList = []
@@ -56,6 +63,11 @@ func update_time(time_left):
 	tween.start()
 	last_time = time_left
 
+func _input(event):
+	if not change_scene == null:
+		if((event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON) and event.pressed):
+			global.goto_scene(change_scene)
+
 func _process(delta):
 	var time_left = int(timer.get_time_left())
 	if not last_time == time_left:
@@ -74,6 +86,7 @@ func _ready():
 	timer.set_wait_time(time_limit)
 	timer.start()
 	set_process(true)
+	set_process_input(true)
 
 func _on_Timer_timeout():
 	game_failed()

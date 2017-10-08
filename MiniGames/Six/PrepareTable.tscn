@@ -57,6 +57,7 @@ points = Vector2Array( -23.1224, -18.7534, -18.0129, -23.9906, 16.9867, -24.1183
 [node name="Root" type="Node"]
 
 script/script = ExtResource( 1 )
+next_scene = "res://MiniGames/Seven/Intro.tscn"
 
 [node name="Candleabra" type="Sprite" parent="."]
 
