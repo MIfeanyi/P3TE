@@ -25,3 +25,8 @@ You are free to:
 * Adapt — remix, transform, and build upon the material
 
 ## Music License
+This project incorporates audio from the following artists under varying
+licenses:
+
+* [80 FIGHT](https://freesound.org/people/bipwave/sounds/393859/) by bipwave
+  under the [CC Zero License](http://creativecommons.org/publicdomain/zero/1.0/)
