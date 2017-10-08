@@ -14,6 +14,7 @@ var Meal = []
 export(float) var time_limit = 5
 onready var timer = get_node("Timer")
 onready var tween = get_node("Time/Tween")
+onready var AnimPlayer = get_node("AnimationPlayer")
 var last_time = 0
 
 # Custom Methods
@@ -100,6 +101,7 @@ func _on_Chicken_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Chicken Clicked")
+		AnimPlayer.play("Chicken")
 		Meal.push_back("Chicken")
 		CheckIfSolutionIsReady()
 
@@ -108,6 +110,7 @@ func _on_Egg_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Egg Clicked")
+		AnimPlayer.play("Egg")
 		Meal.push_back("Egg")
 		CheckIfSolutionIsReady()
 
@@ -116,6 +119,7 @@ func _on_Mushroom_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Mushroom Clicked")
+		AnimPlayer.play("Mushroom")
 		Meal.push_back("Mushroom")
 		CheckIfSolutionIsReady()
 
@@ -124,6 +128,7 @@ func _on_Carrot_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Carrot Clicked")
+		AnimPlayer.play("Carrot") 
 		Meal.push_back("Carrot")
 		CheckIfSolutionIsReady()
 
@@ -131,3 +136,6 @@ func _on_Timer_timeout():
 	# Eventually make a fail function
 	print("Dinner is ruined!")
 	get_node("DefeatPanel").show();
+
+func _on_AnimationPlayer_finished():
+	AnimPlayer.stop()
