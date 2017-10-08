@@ -1,16 +1,43 @@
 # P3TE
-A game where you play as an alien trying to learn about the life forms on earth by imitating them
+A game where you play as an alien trying to learn about the life forms on earth by imitating them.  Just
+before deciding the world isn't worth it, maybe there is one last hope for earth.
+
+Game designed during the Open Jam game jam.  Goal was to design an open source game with the theme of "Impact".
+We used many different open source tools to build out this game with GoDot as the main open source game engine.
+For a list of tools see the tools section.
 
 ## Team
+
+* Game Designer
+** MimeBro
+* Artists
+** MagisterT
+** Skullyatta
+** zombieCraig
+** Aoric
+** MimeBro
+* Programmers
+** [KingThrillgore](https://kingthrillgore.itch.io/)
+** Mlfeanyi
+** zombieCraig
 
 ## Special Thanks
 
 # Dependencies
 This game was built with [Godot](https://godotengine.org/). The releases contain the required files required to run. For binary packages please check:
 
-## Libraries
-* 
+# Tools
+Here are a list of some of the tools used to create this game.
 
+* Open Source
+** Godot engine
+** Inkscape
+** Mypaint
+** Gimp
+* Commercial
+** Photoshop
+
+The team developed on Linux, Windows and Mac platforms.
 
 ## Usage
 * Enjoy playing my game!
