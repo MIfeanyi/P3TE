@@ -17,7 +17,7 @@ For a list of tools see the tools section.
 ** Aoric
 ** MimeBro
 * Programmers
-** KingThrillgore
+** [KingThrillgore](https://kingthrillgore.itch.io/)
 ** Mlfeanyi
 ** zombieCraig
 
