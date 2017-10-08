@@ -45,8 +45,7 @@ func DisplayRecipe():
 func DetermineRecipeAdherence():
 	# Determines if the complete meal coheres to the recipe
 	# TODO Lock out the Selection Options
-	
-	
+
 	#print("Comparison result: " + str(result))
 	
 	if Recipe == Meal:
@@ -102,6 +101,7 @@ func _on_Chicken_input_event( viewport, event, shape_idx ):
 	and event.pressed:
 		print("Chicken Clicked")
 		AnimPlayer.play("Chicken")
+		AnimPlayer.queue("ChickenIdle")
 		Meal.push_back("Chicken")
 		CheckIfSolutionIsReady()
 
@@ -111,6 +111,7 @@ func _on_Egg_input_event( viewport, event, shape_idx ):
 	and event.pressed:
 		print("Egg Clicked")
 		AnimPlayer.play("Egg")
+		AnimPlayer.queue("EggIdle")
 		Meal.push_back("Egg")
 		CheckIfSolutionIsReady()
 
@@ -120,6 +121,7 @@ func _on_Mushroom_input_event( viewport, event, shape_idx ):
 	and event.pressed:
 		print("Mushroom Clicked")
 		AnimPlayer.play("Mushroom")
+		AnimPlayer.queue("MushroomIdle")
 		Meal.push_back("Mushroom")
 		CheckIfSolutionIsReady()
 
@@ -128,7 +130,8 @@ func _on_Carrot_input_event( viewport, event, shape_idx ):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		print("Carrot Clicked")
-		AnimPlayer.play("Carrot") 
+		AnimPlayer.play("Carrot")
+		AnimPlayer.queue("CarrotIdle")
 		Meal.push_back("Carrot")
 		CheckIfSolutionIsReady()
 
