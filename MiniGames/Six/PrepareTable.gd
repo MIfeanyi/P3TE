@@ -1,6 +1,7 @@
 extends Node
 
 onready var tween = get_node("TimeRemaining/Tween")
+export(String, FILE, "*.tscn") var next_scene = "res://MiniGames/Seven/Intro.tscn"
 
 var TimeRemaining = 0
 var MaximumTimeAllowed = 30
@@ -14,6 +15,20 @@ var Flame5Timer
 var Flame6Timer
 var Flame7Timer
 var last_time = 0
+var change_scene = null
+
+func game_failed():
+	get_node("DefeatPanel").show()
+	timer.stop()
+	print("FAILED")
+	change_scene = "res://MiniGames/Six/Intro.tscn"
+
+func game_passed():
+	get_node("VictoryPanel").show()
+	timer.stop()
+	print("SUCCESS")
+	change_scene = next_scene
+
 
 func ResetCandle(FlameNumber):
 	if(typeof(FlameNumber) != TYPE_INT):
@@ -63,7 +78,6 @@ func CheckIfCandlesAreLit():
 	if (Candle1Lit == false and Candle2Lit == false and Candle3Lit == false and Candle4Lit == false and Candle5Lit == false and Candle6Lit == false and Candle7Lit == false):
 		# They've completed this minigame
 		print("Minigame completed")
-		get_node("VictoryPanel").show();
 		# Stop All Timers (this won't matter in practice but does for development)
 		get_node("MainTimer").stop();
 		get_node("Flame1Timer").stop();
@@ -73,9 +87,11 @@ func CheckIfCandlesAreLit():
 		get_node("Flame5Timer").stop();
 		get_node("Flame6Timer").stop();
 		get_node("Flame7Timer").stop();
+		game_passed()
 	else:
 		# Still haven't completed it
 		print("Minigame not completed")
+		game_failed()
 	 
 func _ready():
 	randomize()
@@ -89,6 +105,7 @@ func _ready():
 	print("Starting Main Timer")
 	MainTimer.start()
 	set_process(true)
+	set_process_input(true)
 
 func update_time(time_left):
 	tween.interpolate_property(get_node("TimeRemaining"), "rect/scale", Vector2(1.5, 1.5), Vector2(1.0, 1.0), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_IN)
@@ -108,6 +125,12 @@ func _process(delta):
 	var time_left = int(MainTimer.get_time_left())
 	if not last_time == time_left:
 		update_time(time_left)
+
+func _input(event):
+	if not change_scene == null:
+		if((event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON) and event.pressed):
+			global.goto_scene(change_scene)
+
 
 func _on_Flame1_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON \
@@ -171,8 +194,7 @@ func _on_Flame7_input_event( viewport, event, shape_idx ):
 
 func _on_MainTimer_timeout():
 	# If the player ever gets here they didn't win so we have to rack up a loss.\
-	get_node("DefeatPanel").show();
-	print("Minigame Lost!")
+	game_failed()
 	# Transition to next game (TODO by other developers)
 
 

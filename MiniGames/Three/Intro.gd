@@ -12,7 +12,7 @@ func start_game():
 		print("Error: Minigame scene could not be loaded")
 
 func _input(event):
-	if(event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON):
+	if((event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON) and event.pressed):
 		start_game()
 
 func _ready():

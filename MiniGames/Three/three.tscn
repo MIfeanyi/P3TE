@@ -16,6 +16,7 @@ font/font = ExtResource( 3 )
 script/script = ExtResource( 1 )
 time_limit = 5
 number_of_clothes = 6
+next_scene = "res://MiniGames/Four/Intro.tscn"
 
 [node name="BG" type="TextureFrame" parent="."]
 
@@ -86,6 +87,60 @@ playback/process_mode = 1
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="VictoryPanel" type="Panel" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 192.0
+margin/top = 225.0
+margin/right = 509.0
+margin/bottom = 383.0
+
+[node name="Label" type="Label" parent="VictoryPanel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 84.0
+margin/top = 72.0
+margin/right = 242.0
+margin/bottom = 86.0
+text = "Great! Ready to impress!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="DefeatPanel" type="Panel" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 192.0
+margin/top = 225.0
+margin/right = 509.0
+margin/bottom = 383.0
+
+[node name="Label" type="Label" parent="DefeatPanel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 57.0
+margin/top = 68.0
+margin/right = 258.0
+margin/bottom = 82.0
+text = "Oh No!  You can't look like that!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

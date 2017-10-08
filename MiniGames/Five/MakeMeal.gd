@@ -3,6 +3,8 @@ extends Node
 # Constants
 const MAX_RECIPE_ITEMS = 7
 
+export(String, FILE, "*.tscn") var next_scene = "res://MiniGames/Six/Intro.tscn"
+
 # class member variables
 var Recipe = []
 var Ingredients = ["Chicken", "Egg", "Mushroom", "Carrot"]
@@ -16,8 +18,22 @@ onready var timer = get_node("Timer")
 onready var tween = get_node("Time/Tween")
 onready var AnimPlayer = get_node("AnimationPlayer")
 var last_time = 0
+var change_scene = null
 
 # Custom Methods
+
+func game_failed():
+	get_node("DefeatPanel").show()
+	timer.stop()
+	print("FAILED")
+	change_scene = "res://MiniGames/Five/Intro.tscn"
+
+func game_passed():
+	get_node("VictoryPanel").show()
+	timer.stop()
+	print("SUCCESS")
+	change_scene = next_scene
+
 func DetermineRecipe():
 	# Determines the ingredients for the recipe to be displayed on the TV
 	
@@ -51,13 +67,11 @@ func DetermineRecipeAdherence():
 	if Recipe == Meal:
 		# Victory Condition
 		print("Dinner is served!")
-		get_node("VictoryPanel").show();
-		timer.stop()
+		game_passed()
 	else:
 		# Defeat Condition
 		print("Dinner is ruined!")
-		get_node("DefeatPanel").show();
-		timer.stop()
+		game_failed()
 
 func CheckIfSolutionIsReady():
 	# Checks to see if the completed recipe has seven ingredients
@@ -89,11 +103,17 @@ func _ready():
 	timer.set_wait_time(time_limit)
 	timer.start()
 	set_process(true)
+	set_process_input(true)
 
 func _process(delta):
 	var time_left = int(timer.get_time_left())
 	if not last_time == time_left:
 		update_time(time_left)
+
+func _input(event):
+	if not change_scene == null:
+		if((event.type == InputEvent.KEY) or (event.type == InputEvent.MOUSE_BUTTON) and event.pressed):
+			global.goto_scene(change_scene)
 
 func _on_Chicken_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON \
@@ -137,8 +157,7 @@ func _on_Carrot_input_event( viewport, event, shape_idx ):
 
 func _on_Timer_timeout():
 	# Eventually make a fail function
-	print("Dinner is ruined!")
-	get_node("DefeatPanel").show();
+	game_failed()
 
 func _on_AnimationPlayer_finished():
 	AnimPlayer.stop()
