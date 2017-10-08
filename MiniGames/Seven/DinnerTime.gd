@@ -1,6 +1,5 @@
 extends Node2D
 
-onready var GlobalNode = get_node("/root/gloal")
 var WrongSelections = 0
 var QuestionsMaryJane = [
 	"You look a bit nervous. Are you okay?", 
@@ -52,16 +51,16 @@ var ActiveQuestion
 # Custom Methods
 
 func SelectDate():
-	#var SelectedDate = GlobalNode.mate_selected
-	
-	#if SelectedDate == AMILIA:
-	#	print("You're on a date with Amilia")
-	#	get_node("MaryJaneOverlay").show()
-	#elif SelectedDate == MARYJANE:
-	#	print("You're on a date with Mary Jane")
-	#	get_node("AmiliaOverlay").show()
-	SelectedDate = "Mary Jane"
-	get_node("MaryJaneOverlay").show()
+	var SelectedDate = global.mate_selected
+	if SelectedDate == global.AMILIA:
+		print("You're on a date with Amilia")
+		get_node("MaryJaneOverlay").show()
+	elif SelectedDate == global.MARYJANE:
+		print("You're on a date with Mary Jane")
+		get_node("AmiliaOverlay").show()
+	else:
+		SelectedDate = global.MARYJANE
+		get_node("MaryJaneOverlay").show()
 
 func CheckWrongSelections():
 	# Checks to see if the wrong selections has hit 3. If so, returns state to indicate game over
