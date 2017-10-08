@@ -13,5 +13,8 @@ func goto_scene(scene):
 	else:
 		print("ERROR: Couldn't switch to scene:",scene)
 
+func select_mate(mate):
+	mate_selected = mate
+	
 func _ready():
 	pass
