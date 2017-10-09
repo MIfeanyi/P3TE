@@ -58,3 +58,4 @@ licenses:
 * [80 FIGHT](https://freesound.org/people/bipwave/sounds/393859/) by bipwave
   under the [CC Zero License](http://creativecommons.org/publicdomain/zero/1.0/)
 * [8bit mix](https://freesound.org/people/weaverfishable/sounds/151780/) by weaverfishable under the [CC Zero License](http://creativecommons.org/publicdomain/zero/1.0/)
+* [Happy 8-bit Loop 01](https://freesound.org/people/Tristan_Lohengrin/sounds/343835/) By [Tristan Lohengrin](http://tristanlohengrin.wixsite.com/studio) under the [CC Attribution License](http://creativecommons.org/licenses/by/3.0/)
