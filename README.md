@@ -12,7 +12,7 @@ For a list of tools see the tools section.
 ** [MimeBro](https://mimebro.tumblr.com/)
 * Artists
 ** Crecs
-** Skullyatta
+** [Skullyatta](https://aexer.itch.io/)
 ** zombieCraig
 ** Aoric
 ** MimeBro
