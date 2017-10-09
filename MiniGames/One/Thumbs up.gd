@@ -8,7 +8,9 @@ func _ready():
 
 func _process(delta):
 	translate(velocity * delta)
+	# If the icon hits the bottom
 	if(get_pos().y >= get_viewport_rect().size.height):
+		print("free")
 		queue_free()
 		pass 
 	pass
