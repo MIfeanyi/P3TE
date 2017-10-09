@@ -19,13 +19,13 @@ var change_scene = null
 
 func game_failed():
 	get_node("DefeatPanel").show()
-	timer.stop()
+	get_node("MainTimer").stop()
 	print("FAILED")
 	change_scene = "res://MiniGames/Six/Intro.tscn"
 
 func game_passed():
 	get_node("VictoryPanel").show()
-	timer.stop()
+	get_node("MainTimer").stop()
 	print("SUCCESS")
 	change_scene = next_scene
 
