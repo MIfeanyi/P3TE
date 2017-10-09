@@ -91,7 +91,7 @@ func CheckIfCandlesAreLit():
 	else:
 		# Still haven't completed it
 		print("Minigame not completed")
-		game_failed()
+#		game_failed()
 	 
 func _ready():
 	randomize()
