@@ -9,7 +9,7 @@ For a list of tools see the tools section.
 ## Team
 
 * Game Designer
-** MimeBro
+** [MimeBro](https://mimebro.tumblr.com/)
 * Artists
 ** Crecs
 ** Skullyatta
@@ -18,7 +18,7 @@ For a list of tools see the tools section.
 ** MimeBro
 * Programmers
 ** [KingThrillgore](https://kingthrillgore.itch.io/)
-** Mlfeanyi
+** [Mlfeanyi](https://mifeanyi.itch.io/)
 ** zombieCraig
 
 ## Special Thanks
