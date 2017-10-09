@@ -2,7 +2,7 @@
 A game where you play as an alien trying to learn about the life forms on earth by imitating them.  Just
 before deciding the world isn't worth it, maybe there is one last hope for earth.
 
-Game designed during the Open Jam game jam.  Goal was to design an open source game with the theme of "Impact".
+Game designed during the [Open Jam Game Jam](https://itch.io/jam/open-jam-1) . The goal was to design an open source game with the theme of "Impact".
 We used many different open source tools to build out this game with GoDot as the main open source game engine.
 For a list of tools see the tools section.
 
