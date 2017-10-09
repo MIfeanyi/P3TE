@@ -3,7 +3,7 @@ extends Node
 # Constants
 const MAX_RECIPE_ITEMS = 7
 
-export(String, FILE, "*.tscn") var next_scene = "res://MiniGames/Six/Intro.tscn"
+export(String, FILE, "*.tscn") var next_scene = "res://MiniGames/Seven/seven.tscn"
 
 # class member variables
 var Recipe = []
