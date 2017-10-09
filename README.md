@@ -46,10 +46,7 @@ The team developed on Linux, Windows and Mac platforms.
 This project is under [GPL 3.0](https://github.com/MIfeanyi/P3TE/blob/master/LICENSE)
 
 ## Graphics License
-[Attribution](https://creativecommons.org/licenses/)
-You are free to:
-* Share — copy and redistribute the material in any medium or format
-* Adapt — remix, transform, and build upon the material
+[GPL 3.0](https://github.com/MIfeanyi/P3TE/blob/master/LICENSE)
 
 ## Music License
 This project incorporates audio from the following artists under varying
