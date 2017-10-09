@@ -22,7 +22,7 @@ margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
 transition_time = 3.0
-minigame = "res://MiniGames/One/One.tscn"
+minigame = "res://MiniGames/One/one_alt.tscn"
 
 [node name="BG" type="Panel" parent="."]
 
