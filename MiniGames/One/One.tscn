@@ -1,0 +1,175 @@
+[gd_scene load_steps=16 format=1]
+
+[ext_resource path="res://MiniGames/One/One.gd" type="Script" id=1]
+[ext_resource path="res://MiniGames/One/HookMUI.png" type="Texture" id=2]
+[ext_resource path="res://RawAssets/Sketches/Amilia.png" type="Texture" id=3]
+[ext_resource path="res://RawAssets/Sketches/mary_jane.png" type="Texture" id=4]
+[ext_resource path="res://MiniGames/One/gfx/phone.png" type="Texture" id=5]
+[ext_resource path="res://MiniGames/One/Notification.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MiniGames/One/UI/like btn.png" type="Texture" id=7]
+[ext_resource path="res://MiniGames/One/UI/like disable btn.png" type="Texture" id=8]
+[ext_resource path="res://MiniGames/One/UI/like hover btn.png" type="Texture" id=9]
+[ext_resource path="res://MiniGames/One/UI/love btn.png" type="Texture" id=10]
+[ext_resource path="res://MiniGames/One/UI/love disabled btn.png" type="Texture" id=11]
+[ext_resource path="res://MiniGames/One/UI/love hover btn.png" type="Texture" id=12]
+[ext_resource path="res://MiniGames/One/UI/star btn.png" type="Texture" id=13]
+[ext_resource path="res://MiniGames/One/UI/star disable btn.png" type="Texture" id=14]
+[ext_resource path="res://MiniGames/One/UI/star hover btn.png" type="Texture" id=15]
+
+[node name="Game" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Choose" type="Node2D" parent="Background"]
+
+[node name="Phone" type="Sprite" parent="Background/Choose"]
+
+transform/pos = Vector2( 302.233, 382.559 )
+transform/scale = Vector2( 0.910423, 0.744549 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Background/Choose"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 219.0
+margin/top = 419.0
+margin/right = 443.0
+margin/bottom = 493.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Choose One"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Girl1" type="TextureButton" parent="Background/Choose"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 205.0
+margin/top = 229.0
+margin/right = 293.0
+margin/bottom = 368.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+params/resize_mode = 1
+params/stretch_mode = 0
+
+[node name="Girl2" type="TextureButton" parent="Background/Choose"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 308.0
+margin/top = 226.0
+margin/right = 404.0
+margin/bottom = 373.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/resize_mode = 1
+params/stretch_mode = 0
+
+[node name="Fall" type="Node2D" parent="Background"]
+
+visibility/visible = false
+transform/pos = Vector2( 99.513, 39.1418 )
+
+[node name="phone" type="Sprite" parent="Background/Fall"]
+
+transform/pos = Vector2( 219.486, 241.261 )
+transform/scale = Vector2( 1.66177, 1.54461 )
+texture = ExtResource( 5 )
+
+[node name="Girl1" type="Sprite" parent="Background/Fall/phone"]
+
+visibility/visible = false
+transform/pos = Vector2( -3.87656, -63.0398 )
+transform/scale = Vector2( 0.512308, 0.533307 )
+texture = ExtResource( 3 )
+
+[node name="Girl2" type="Sprite" parent="Background/Fall/phone"]
+
+visibility/visible = false
+transform/pos = Vector2( -34.5941, -63.8692 )
+transform/scale = Vector2( 0.619505, 0.550312 )
+texture = ExtResource( 4 )
+
+[node name="Node" parent="Background/Fall/phone" instance=ExtResource( 6 )]
+
+[node name="Like Btn" type="TextureButton" parent="Background/Fall"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 26.0
+margin/top = 405.0
+margin/right = 159.0
+margin/bottom = 535.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 8 )
+textures/hover = ExtResource( 9 )
+textures/disabled = ExtResource( 8 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Love Btn" type="TextureButton" parent="Background/Fall"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 291.0
+margin/top = 404.0
+margin/right = 419.0
+margin/bottom = 522.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 10 )
+textures/pressed = ExtResource( 11 )
+textures/hover = ExtResource( 12 )
+textures/disabled = ExtResource( 11 )
+params/resize_mode = 1
+params/stretch_mode = 0
+
+[node name="Star Btn" type="TextureButton" parent="Background/Fall"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 162.0
+margin/top = 403.0
+margin/right = 295.0
+margin/bottom = 533.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+textures/pressed = ExtResource( 14 )
+textures/hover = ExtResource( 15 )
+textures/disabled = ExtResource( 14 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[connection signal="pressed" from="Background/Choose/Girl1" to="." method="_on_Girl_pressed" binds= [ "Girl1" ]]
+
+[connection signal="pressed" from="Background/Choose/Girl2" to="." method="_on_Girl_pressed" binds= [ "Girl2" ]]
+
+
