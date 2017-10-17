@@ -1,6 +1,6 @@
 # P3TE
 A game where you play as an alien trying to learn about the life forms on earth by imitating them.  Just
-before deciding the world isn't worth it, maybe there is one last hope for earth.
+before deciding the world isn't worth it, maybe there is one last hope for earth. Try it [here](https://zombiecraig.itch.io/p3te).
 
 Game designed during the [Open Jam Game Jam](https://itch.io/jam/open-jam-1) . The goal was to design an open source game with the theme of "Impact".
 We used many different open source tools to build out this game with Godot as the main open source game engine.
@@ -34,13 +34,14 @@ Here are a list of some of the tools used to create this game.
 ** Inkscape
 ** Mypaint
 ** Gimp
+
 * Commercial
 ** Photoshop
 
 The team developed on Linux, Windows and Mac platforms.
 
 ## Usage
-* Enjoy playing my game!
+* Enjoy playing the [game!](https://zombiecraig.itch.io/p3te)
 
 ## Software License
 This project is under [GPL 3.0](https://github.com/MIfeanyi/P3TE/blob/master/LICENSE)
