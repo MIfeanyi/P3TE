@@ -8,15 +8,15 @@ For a list of tools see the tools section.
 
 ## Team
 
-* Game Designer
+# Game Designer
 ** [MimeBro](https://mimebro.tumblr.com/)
-* Artists
+# Artists
 ** Crecs
 ** [Skullyatta](https://aexer.itch.io/)
 ** [zombieCraig](https://zombiecraig.itch.io)
 ** Aoric
 ** [MimeBro](https://mimebro.tumblr.com/)
-* Programmers
+# Programmers
 ** [KingThrillgore](https://kingthrillgore.itch.io/)
 ** [Mlfeanyi](https://mifeanyi.itch.io/)
 ** [zombieCraig](https://zombiecraig.itch.io)
@@ -24,12 +24,12 @@ For a list of tools see the tools section.
 ## Special Thanks
 
 # Dependencies
-This game was built with [Godot](https://godotengine.org/). The releases contain the required files required to run. For binary packages please check:
+This game was built with [Godot](https://godotengine.org/). The releases contain the required files required to run. For binary packages please check the (official releases)[https://github.com/MIfeanyi/P3TE/releases]
 
 # Tools
 Here are a list of some of the tools used to create this game.
 
-* Open Source
+# Open Source
 ** Godot engine
 ** Inkscape
 ** Mypaint
