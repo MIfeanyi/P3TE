@@ -9,17 +9,17 @@ For a list of tools see the tools section.
 ## Team
 
 # Game Designer
-** [MimeBro](https://mimebro.tumblr.com/)
+** -[MimeBro](https://mimebro.tumblr.com/)
 # Artists
 ** Crecs
-** [Skullyatta](https://aexer.itch.io/)
-** [zombieCraig](https://zombiecraig.itch.io)
-** Aoric
-** [MimeBro](https://mimebro.tumblr.com/)
+** -[Skullyatta](https://aexer.itch.io/)
+** -[zombieCraig](https://zombiecraig.itch.io)
+** -Aoric
+** -[MimeBro](https://mimebro.tumblr.com/)
 # Programmers
-** [KingThrillgore](https://kingthrillgore.itch.io/)
-** [Mlfeanyi](https://mifeanyi.itch.io/)
-** [zombieCraig](https://zombiecraig.itch.io)
+** -[KingThrillgore](https://kingthrillgore.itch.io/)
+** -[Mlfeanyi](https://mifeanyi.itch.io/)
+** -[zombieCraig](https://zombiecraig.itch.io)
 
 ## Special Thanks
 
