@@ -1,6 +1,6 @@
 extends Node
 
-enum {NOMATE, MARYJANE, AMILIA}
+enum MATE{NOMATE, MARYJANE, AMILIA}
 
 var mate_selected = NOMATE
 var current_scene = null

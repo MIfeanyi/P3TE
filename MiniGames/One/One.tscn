@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://MiniGames/One/One.gd" type="Script" id=1]
 [ext_resource path="res://MiniGames/One/HookMUI.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://MiniGames/One/UI/star btn.png" type="Texture" id=13]
 [ext_resource path="res://MiniGames/One/UI/star disable btn.png" type="Texture" id=14]
 [ext_resource path="res://MiniGames/One/UI/star hover btn.png" type="Texture" id=15]
+[ext_resource path="res://RawAssets/Audio/393859__bipwave__80-fight.ogg" type="AudioStream" id=16]
+[ext_resource path="res://MiniGames/One/sfx/sfx.gd" type="Script" id=17]
 
 [node name="Game" type="Node"]
 
@@ -61,7 +63,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 3 )
-params/resize_mode = 1
+params/resize_mode = 0
 params/stretch_mode = 0
 
 [node name="Girl2" type="TextureButton" parent="Background/Choose"]
@@ -78,7 +80,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 4 )
-params/resize_mode = 1
+params/resize_mode = 0
 params/stretch_mode = 0
 
 [node name="Fall" type="Node2D" parent="Background"]
@@ -145,7 +147,7 @@ textures/normal = ExtResource( 10 )
 textures/pressed = ExtResource( 11 )
 textures/hover = ExtResource( 12 )
 textures/disabled = ExtResource( 11 )
-params/resize_mode = 1
+params/resize_mode = 0
 params/stretch_mode = 0
 
 [node name="Star Btn" type="TextureButton" parent="Background/Fall"]
@@ -167,6 +169,18 @@ textures/hover = ExtResource( 15 )
 textures/disabled = ExtResource( 14 )
 params/resize_mode = 0
 params/stretch_mode = 0
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 16 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+script/script = ExtResource( 17 )
 
 [connection signal="pressed" from="Background/Choose/Girl1" to="." method="_on_Girl_pressed" binds= [ "Girl1" ]]
 

@@ -1,6 +1,6 @@
 extends Node
 
-enum STATES {RESET,CHOOSE,GAME,LOSE,SWITCH}
+enum STATES{RESET,CHOOSE,GAME,LOSE,SWITCH}
 var girl
 var strikes = 0 
 var state = CHOOSE
