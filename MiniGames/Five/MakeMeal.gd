@@ -96,6 +96,7 @@ func update_time(time_left):
 func _ready():
 	randomize()
 	
+	print("MakeMeal.tscn ran MakeMeal.gd")
 	# Called every time the node is added to the scene.
 	# Initialization here
 	DetermineRecipe()
