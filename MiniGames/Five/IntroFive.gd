@@ -16,6 +16,7 @@ func _input(event):
 		start_game()
 
 func _ready():
+	print("Intro.tscn ran IntroFive.gd")
 	timer.set_wait_time(transition_time)
 	timer.start()
 	set_process_input(true)

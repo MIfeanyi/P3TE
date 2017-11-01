@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://MiniGames/Three/Intro.gd" type="Script" id=1]
+[ext_resource path="res://MiniGames/Five/IntroFive.gd" type="Script" id=1]
 [ext_resource path="res://RawAssets/Fonts/Aero.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -54,9 +54,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 124.0
-margin/top = 304.0
+margin/top = 305.0
 margin/right = 513.0
-margin/bottom = 332.0
+margin/bottom = 331.0
 custom_fonts/font = SubResource( 1 )
 text = "Hurry!  Make some food!"
 percent_visible = 1.0
