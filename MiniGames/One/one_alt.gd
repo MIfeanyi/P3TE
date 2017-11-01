@@ -28,18 +28,38 @@ func add_wrong():
 	if total_wrong > 2:
 		get_node("DefeatPanel").show()
 		current_scene = "res://MiniGames/One/Intro.tscn"
+#
+func set_next_timer():
+	get_node("LikeTimer").stop()
+	get_node("LoveTimer").stop()
+	get_node("StarTimer").stop()
+	
+	randomize()
+	var next = floor(rand_range(0,3)) # generate rand num from 0-2
+	print(next)
+	if next == 0:
+		get_node("LikeTimer").set_wait_time(rand_range(1, 3))
+		get_node("LikeTimer").start()
+	if next == 1:
+		get_node("LoveTimer").set_wait_time(rand_range(1, 3))
+		get_node("LoveTimer").start()
+	if next == 2:
+		get_node("StarTimer").set_wait_time(rand_range(1, 3))
+		get_node("StarTimer").start()
 
+	
 func enable_game_screen():
 	get_node("BG/Select").hide()
 	get_node("BG/LeftButton").hide()
 	get_node("BG/RightButton").hide()
 	get_node("BG/Panel").show()
-	get_node("LikeTimer").set_wait_time(rand_range(0.5, 3))
-	get_node("LikeTimer").start()
-	get_node("LoveTimer").set_wait_time(rand_range(0.5, 3))
-	get_node("LoveTimer").start()
-	get_node("StarTimer").set_wait_time(rand_range(0.5, 3))
-	get_node("StarTimer").start()
+	set_next_timer()
+#	get_node("LikeTimer").set_wait_time(rand_range(0.5, 3))
+#	get_node("LikeTimer").start()
+#	get_node("LoveTimer").set_wait_time(rand_range(0.5, 3))
+#	get_node("LoveTimer").start()
+#	get_node("StarTimer").set_wait_time(rand_range(0.5, 3))
+#	get_node("StarTimer").start()
 
 func _input(event):
 	if not current_scene == null:
@@ -77,6 +97,7 @@ func _on_RightButton_pressed():
 	_on_LeftButton_pressed() # Since with 2 ppl it doesn't matter
 
 func _on_Like_pressed():
+	set_next_timer()
 	var found = false
 	for x in falling_items:
 		if x.get_pos().y > 400 and x.get_pos().y < 450:
@@ -88,6 +109,7 @@ func _on_Like_pressed():
 		add_wrong()
 
 func _on_Love_pressed():
+	set_next_timer()
 	var found = false
 	for x in falling_items:
 		if x.get_pos().y > 400 and x.get_pos().y < 450:
@@ -99,6 +121,7 @@ func _on_Love_pressed():
 		add_wrong()
 
 func _on_Star_pressed():
+	set_next_timer()
 	var found = false
 	for x in falling_items:
 		if x.get_pos().y > 400 and x.get_pos().y < 450:
